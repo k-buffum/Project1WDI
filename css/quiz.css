@@ -1,0 +1,28 @@
+div #letter {
+	border-bottom: 5px solid black;
+}
+
+.container {
+	height: 100px;
+	width: 500px;
+}
+
+div.card {
+	width: 50px;
+	height: 30px;
+	display: inline-block;
+	margin: 10px auto;
+}
+
+
+div.front {
+	background-color: grey;
+	margin: 5px 5px 5px 5px;
+	border-bottom: 5px solid black;
+}
+
+div.back {
+	background-color: pink;
+	margin: 5px 5px 5px 5px;
+	border-bottom: 5px solid black;
+}
