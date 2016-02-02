@@ -22,9 +22,11 @@ var $muscleBonesQuestions = [
 		"http://www.sciencekids.co.nz/sciencefacts/humanbody.html"]
 ]
 
+var playerTurn = 1;
 var length = 0;
 var wrongGuess = 0;
-var score = 0;
+var scorePlayer1 = 0;
+var scorePlayer2 = 0;
 var count = 0;
 var name = $muscleBonesQuestions[count][0].toUpperCase();
 var nameSplit = $muscleBonesQuestions[count][0].split("");
@@ -47,29 +49,56 @@ var makeBoxes = function() {
 $(document).ready(function() {
 	makeBoxes();
 	count += 1;
+
 	// Prevents cards from flipping, disables guessed letters, flips correctly guessed letters
 	$('#guess').on('submit', function (e) {
 		e.preventDefault();
 		guessedLetter = ($('#guessInput').val());
+
+		// Check if guessed letter matches name & checks if player has won
 		if( name.indexOf(guessedLetter) !== -1 && name.length !== length) {
+			
+			// Flips matching cards over for guessed letter
 			$(".card[data-value='" + (guessedLetter) +"'").flip(true);
+
+			// Adds # of cards flipped to length (helps keep track of how many letters have been guessed out of the word)
 			length += $(".card[data-value='" + (guessedLetter) +"'").length;
-			console.log(length);
-			console.log(name.length);
+
+			// Checks if player has guessed all letters
 			if ( length == name.length) {
-				score += 1;
-				$('#score').html("Score: " + score);
-				alert("You won, press Let's play to play again!");
+				swal("You won!!", "Click the Let's Play button to move on to the next round.", "success");
 			}
 			//console.log($(".card[data-value='" + (guessedLetter) +"'").length);
-			// console.log(guessedLetter);
+
+			// Adds to player score & prints score to screen
+			if (playerTurn == 1) {
+				scorePlayer1 += $(".card[data-value='" + (guessedLetter) +"'").length;
+				$('#p1Score').html("Player 1 score: " + scorePlayer1);
+			} else {
+				scorePlayer2 += $(".card[data-value='" + (guessedLetter) +"'").length;
+				$('#p2Score').html("Player 2 score: " + scorePlayer2);
+			}
+
 		} else if (wrongGuess < 6) {
 			wrongGuess += 1;
-			console.log('hi');
-			console.log(guessedLetter);
-		} else {
-			alert("You guessed incorrect too many times, press Let's play to play again.")
+			console.log(wrongGuess);
+
+			// Changes playerTurn
+			if (playerTurn == 1 && wrongGuess !== 6) {
+				playerTurn = 2;
+				$('#playerTurn').text("Player Two's Turn");
+				swal("Player Two's Turn");
+			} else if (playerTurn == 2 && wrongGuess !== 6) {
+				playerTurn = 1;
+				$('#playerTurn').text("Player One's Turn");
+				swal("Player One's Turn");
+			} else if (wrongGuess == 6) {
+				// Checks if the players have guessed wrong to many times.
+				swal("Oh no!","You two guessed incorrect too many times. Click Let's play to play again.", "error");
+				console.log("wrong guess = 6")
+			}
 		}
+
 		$('#' + guessedLetter).attr("disabled", "disabled");
 		$('#guessInput').val(0);
 	});
@@ -84,6 +113,7 @@ $(document).ready(function() {
 			makeBoxes();
 			wrongGuess = 0;
 			length = 0;
+			$('#hint').val(0);
 			$('#guessInput option').attr("disabled", false);
 		} else {
 			count = 0;
