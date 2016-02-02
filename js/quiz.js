@@ -83,6 +83,8 @@ $(document).ready(function() {
 			fact = $muscleBonesQuestions[count][1];
 			makeBoxes();
 			wrongGuess = 0;
+			length = 0;
+			$('#guessInput option').attr("disabled", false);
 		} else {
 			count = 0;
 		}
