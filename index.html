@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>How well do you know your body?</title>
+	<title>Hangman</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 </head>
 <body>
+	<h1>Let's Play Hangman!!</h1>
 
-	<button id="quizLink"><a href="games/quiz.html">Bones and Muscles Quiz</a></button>
+	<div id='buttons'>
+		<button id="quizLink"><a href="game/quiz.html">Hangman</a></button>
+		<button id="instructions">Instructions</button>
+	
+		<div id="instructionsContainer">
+				<h4>Instructions</h4>
+				<ol>
+					<li>Press Hangman to get started.</li>
+					<li>If the button on the right reads "Two Player" you are in one player mode.</li>
+					<li>If the button on the right reads "One Player" you are in two player mode.</li>
+					<li>Click the empty hint box to reveal a hint about the word.</li>
+					<li>To guess a letter, choose from the drop down box, then press "Submit Guess" when ready.</li>
+					<li>To change the mystery word click "Lets Play"</li>
+					<br>
+				</ol>
+		</div>
 
+	</div>
 
+	<div id='image'>
+		<img src="images/hangmanBase.jpg">
+	</div>
+
+	<script src="js/sweetalert.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<script src="js/script.js"></script>
 </body>

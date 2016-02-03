@@ -1,0 +1,43 @@
+a {
+	text-decoration: none;
+	color: white;
+}
+
+body {
+	background-image: url('../images/cactus.png');
+	background-position: 50% 50%;
+	color: white;
+	background-attachment: fixed;
+}
+
+button {
+	height: 100px;
+	width: 200px;
+	font-size: 30px;
+	background-color: navy;
+	color: white;
+	margin: 20px 0 0 250px;
+	display: block;
+	overflow: hidden;
+}
+
+h1 {
+	text-align: center;
+}
+
+img {
+	max-height: 600px;
+	float: right;
+	margin: 0 100px 0 50px;
+}
+
+#instructionsContainer {
+	margin: 100px 0 0 55px;
+	background-color: rgba(0, 39, 183, 0.4);
+	background: rgba(0, 39, 183, 0.4);
+	/******textshadow*******/
+}
+
+#buttons {
+	float: left;
+}

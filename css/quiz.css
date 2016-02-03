@@ -1,63 +1,85 @@
 /*********************************
-MEDIA STYLING
+GENERAL
 *********************************/
-
-
-@media (min-width) {
-	
-}
-
-/*********************************
-
-*********************************/
-
-
-/*********************************
-
-*********************************/
-
-
-/*********************************
-
-*********************************/
-
-
-/*********************************
-
-*********************************/
-
 
 body {
 	background-image: url("../images/cactus.png");
 	background-position: center;
+	background-attachment: fixed;
 	color: white;
 }
 
-fieldset#guessContainer {
-	width: 225px;
-}
-
-header {
-	color: white;
+div#leftSide {
+	float: left;
+	overflow: hidden;
+	text-align: center;
 }
 
 img {
-	height: 500px;
+	max-height: 500px;
 	float: right;
 	margin-right: 50px;
 	margin-top: 20px;
 }
 
-div.back {
-	background-color: darkolivegreen;
-	margin: 5px 5px 5px 5px;
-	border-bottom: 5px solid black;
-	color: black;
+
+
+/*********************************
+HEADER
+*********************************/
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+header button {
+	background-color: midnightblue;
+	color: white;
+	width: 75px;
+	height: 25px;
+	border: 1px solid white;
+	display: inline-block;
+}
+
+
+
+/*********************************
+PLAYER INFO
+*********************************/
+
+#playerScoreHolder, #playerTurn {
+	display: inline-block;
+}
+
+#playerScoreHolder {
+	margin: 0 50px 0 100px;
+}
+
+#playerTurn {
+	width: 69%;
 	text-align: center;
 }
 
+
+
+/*********************************
+MYSTERY WORD CONTAINER
+*********************************/
+
 div.front {
 	color: black;
+	text-align: center;
+	background-color: grey;
+	margin: 5px 5px 5px 5px;
+	border-bottom: 5px solid black;
+}
+
+div.back {
+	background-color: midnightblue;
+	margin: 5px 5px 5px 5px;
+	border-bottom: 5px solid black;
+	color: white;
 	text-align: center;
 }
 
@@ -76,13 +98,25 @@ div.card {
 	margin: 100px 0 25px 100px;
 }
 
-div.front {
-	background-color: grey;
-	margin: 5px 5px 5px 5px;
-	border-bottom: 5px solid black;
+
+
+/*********************************
+HINT CONTAINER
+*********************************/
+
+#hintContainer {
+	width: 225px;
+	margin: 0 0 50px 100px;
 }
 
+
+
+/*********************************
+GUESS CONTAINER
+*********************************/
+
 #guessContainer {
+	width: 225px;
 	margin: 0 0 50px 100px;
 	overflow: hidden;
 }
@@ -91,35 +125,68 @@ div.front {
 	display: inline-block;
 }
 
-#hintContainer {
-	width: 225px;
-	margin: 0 0 50px 100px;
-}
 
-div#leftSide {
-	float: left;
-	clear: right;
-	overflow: hidden;
-	text-align: center;
-}
+
+/*********************************
+LETS PLAY BUTTON
+*********************************/
 
 #letsPlay {
 	overflow: hidden;
-	display: inline-block;
-	position: absolute;
 	margin-left: 15px;
+	position: inherit;
+	float: right;
 	margin-top: 10px;
 }
 
-#playerScoreHolder, #playerTurn {
-	display: inline-block;
+
+
+/*********************************
+MEDIA STYLING
+*********************************/
+
+@media screen and (max-width: 1400px) {
+	header button {
+		display: inline-block;
+		float: right;
+	}
+
+	#playerScoreHolder {
+		margin: 0 auto;
+		padding: 0;
+	}
 }
 
-#playerScoreHolder {
-	margin: 0 50px 0 100px;
+@media screen and (max-width: 1060px) {
+	img {
+		float: none;
+	}
+
+	.container {
+		margin: 0 0 0 275px;
+	}
+
+	#hangmanFrame {
+		text-align: center;
+	}
+
+	#leftSide {
+		width: 80%;
+	}
+
+	#guess {
+		margin: 0;
+	}
+
+	#hintContainer {
+		width: 100%;
+		border: none;
+		margin: 0 0 0 10px;
+	}
 }
 
-#playerTurn {
-	width: 70%;
-	text-align: center;
+@media screen and (max-width: 800px) {
+	.container {
+		margin: 0 0 0 100px;
+	}
 }
