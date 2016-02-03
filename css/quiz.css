@@ -1,10 +1,64 @@
-div #letter {
-	border-bottom: 5px solid black;
+/*********************************
+MEDIA STYLING
+*********************************/
+
+
+@media (min-width) {
+	
 }
 
-.container {
-	height: 100px;
-	width: 500px;
+/*********************************
+
+*********************************/
+
+
+/*********************************
+
+*********************************/
+
+
+/*********************************
+
+*********************************/
+
+
+/*********************************
+
+*********************************/
+
+
+body {
+	background-image: url("../images/cactus.png");
+	background-position: center;
+	color: white;
+}
+
+fieldset#guessContainer {
+	width: 225px;
+}
+
+header {
+	color: white;
+}
+
+img {
+	height: 500px;
+	float: right;
+	margin-right: 50px;
+	margin-top: 20px;
+}
+
+div.back {
+	background-color: darkolivegreen;
+	margin: 5px 5px 5px 5px;
+	border-bottom: 5px solid black;
+	color: black;
+	text-align: center;
+}
+
+div.front {
+	color: black;
+	text-align: center;
 }
 
 div.card {
@@ -14,6 +68,13 @@ div.card {
 	margin: 10px auto;
 }
 
+.container {
+	height: 100px;
+	width: 500px;
+	overflow: hidden;
+	position: relative;
+	margin: 100px 0 25px 100px;
+}
 
 div.front {
 	background-color: grey;
@@ -21,8 +82,44 @@ div.front {
 	border-bottom: 5px solid black;
 }
 
-div.back {
-	background-color: pink;
-	margin: 5px 5px 5px 5px;
-	border-bottom: 5px solid black;
+#guessContainer {
+	margin: 0 0 50px 100px;
+	overflow: hidden;
+}
+
+#guess {
+	display: inline-block;
+}
+
+#hintContainer {
+	width: 225px;
+	margin: 0 0 50px 100px;
+}
+
+div#leftSide {
+	float: left;
+	clear: right;
+	overflow: hidden;
+	text-align: center;
+}
+
+#letsPlay {
+	overflow: hidden;
+	display: inline-block;
+	position: absolute;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+#playerScoreHolder, #playerTurn {
+	display: inline-block;
+}
+
+#playerScoreHolder {
+	margin: 0 50px 0 100px;
+}
+
+#playerTurn {
+	width: 70%;
+	text-align: center;
 }

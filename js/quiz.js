@@ -23,101 +23,146 @@ var $muscleBonesQuestions = [
 ]
 
 var playerTurn = 1;
-var length = 0;
-var wrongGuess = 0;
+var correctGuessCount = 0;
+var incorrectGuessCount = 0;
 var scorePlayer1 = 0;
 var scorePlayer2 = 0;
-var count = 0;
-var name = $muscleBonesQuestions[count][0].toUpperCase();
-var nameSplit = $muscleBonesQuestions[count][0].split("");
-var fact = $muscleBonesQuestions[count][1];
-var guessedLetter = $('#guessInput').val();
+var gamePlayCount = 0;
+var name;
+var nameSplit;
+var fact;
+var onePlayer = true;
 
-// Makes empty boxes with a black line at the bottom for nameSplit.length
-var makeBoxes = function() {
-			$('.container').html("")
-			for (var i = 0; i < nameSplit.length; i++) {
-				$('.container').append('<div class="card" data-value="' + nameSplit[i].toUpperCase() + '"><div class="front">*</div><div class="back">' + nameSplit[i].toUpperCase() + '</div></div>');
-			}
-			$('.card').flip();
+function setupHangmanWord() {
+	$('.container').html("")
+	for (var i = 0; i < nameSplit.length; i++) {
+		$('.container').append('<div class="card" data-value="' + nameSplit[i].toUpperCase() + '"><div class="front">*</div><div class="back">' + nameSplit[i].toUpperCase() + '</div></div>');
+	}
 
-			$('.hint #description').text(fact);
-			$('.card').off('.flip');
+	$('.card').flip();
+	$('.card').off('.flip');
+	$('.hint #description').text(fact);
+}
 
-		}
+function setupGame() {
+	if (gamePlayCount < $muscleBonesQuestions.length) {
+		nameSplit = $muscleBonesQuestions[gamePlayCount][0].split("");
+		name = $muscleBonesQuestions[gamePlayCount][0].toUpperCase();
+		fact = $muscleBonesQuestions[gamePlayCount][1];
+		setupHangmanWord();
+		incorrectGuessCount = 0;
+		correctGuessCount = 0;
+		$('#hint').val(0);
+		$('#guessInput option').attr("disabled", false);
+		$("#hangmanFrame img").attr("src", "../images/hangmanBase.jpg");
+		gamePlayCount += 1;
+	} else {
+		gamePlayCount = 0;
+	}
+}
+
+function setHangmanImage() {
+	if (incorrectGuessCount == 1) {
+		$("#hangmanFrame img").attr("src", "../images/hangmanHead.jpg");
+	} else if (incorrectGuessCount == 2) {
+		$("#hangmanFrame img").attr("src", "../images/hangmanTorso.jpg");
+	} else if (incorrectGuessCount == 3) {
+		$("#hangmanFrame img").attr("src",  "../images/hangmanRLeg.jpg");
+	} else if (incorrectGuessCount == 4) {
+		$("#hangmanFrame img").attr("src", "../images/hangmanLLeg.jpg");
+	} else if (incorrectGuessCount == 5) {
+		$("#hangmanFrame img").attr("src","../images/hangmanRArm.jpg");
+	} else if (incorrectGuessCount == 6) {
+		$("#hangmanFrame img").attr("src", "../images/hangmanBody.jpg");
+	}
+}
+
+function changePlayerTurn() {
+	if (playerTurn == 1) {
+		playerTurn = 2;
+		$('#playerTurn').text("Player Two's Turn");
+		swal("Player Two's Turn");
+	} else {
+		playerTurn = 1;
+		$('#playerTurn').text("Player One's Turn");
+		swal("Player One's Turn");
+	}
+}
+
+function changePlayerScore(lettersFlipped) {
+	if (playerTurn == 1) {
+		scorePlayer1 += lettersFlipped;
+		$('#p1Scr').html(scorePlayer1);
+	} else {
+		scorePlayer2 += lettersFlipped;
+		$('#p2Scr').html(scorePlayer2);
+		
+	}
+}
+
+function resetScore() {
+	scorePlayer1 = 0;
+	scorePlayer2 = 0;
+	$('#p1Scr').html(scorePlayer1);
+	$('#p2Scr').html(scorePlayer2);
+}
 
 $(document).ready(function() {
-	makeBoxes();
-	count += 1;
+	setupGame();
+	$('#p2Score').hide();
 
-	// Prevents cards from flipping, disables guessed letters, flips correctly guessed letters
-	$('#guess').on('submit', function (e) {
+	$('#playerMode').on('click', function() {
+		if (onePlayer) {
+			onePlayer = false;
+			$('#playerMode').html('One Player');
+			$('#p2Score').show();
+			setupGame();
+		} else {
+			onePlayer = true;
+			$('#playerMode').html('Two Player');
+			$('#p2Score').hide();
+			setupGame();
+		}
+		resetScore();
+	});
+
+	$('#guess').on('submit', function(e) {
 		e.preventDefault();
-		guessedLetter = ($('#guessInput').val());
+		var guessedLetter = ($('#guessInput').val());
+		var lettersFlipped = $(".card[data-value='" + (guessedLetter) +"'").length
 
 		// Check if guessed letter matches name & checks if player has won
-		if( name.indexOf(guessedLetter) !== -1 && name.length !== length) {
+		if (name.indexOf(guessedLetter) !== -1) {
 			
 			// Flips matching cards over for guessed letter
 			$(".card[data-value='" + (guessedLetter) +"'").flip(true);
 
-			// Adds # of cards flipped to length (helps keep track of how many letters have been guessed out of the word)
-			length += $(".card[data-value='" + (guessedLetter) +"'").length;
+			changePlayerScore(lettersFlipped);
+			correctGuessCount += lettersFlipped;
 
 			// Checks if player has guessed all letters
-			if ( length == name.length) {
+			if (correctGuessCount == name.length) {
 				swal("You won!!", "Click the Let's Play button to move on to the next round.", "success");
 			}
-			//console.log($(".card[data-value='" + (guessedLetter) +"'").length);
 
-			// Adds to player score & prints score to screen
-			if (playerTurn == 1) {
-				scorePlayer1 += $(".card[data-value='" + (guessedLetter) +"'").length;
-				$('#p1Score').html("Player 1 score: " + scorePlayer1);
-			} else {
-				scorePlayer2 += $(".card[data-value='" + (guessedLetter) +"'").length;
-				$('#p2Score').html("Player 2 score: " + scorePlayer2);
-			}
+		} else {
+			incorrectGuessCount += 1;
+			setHangmanImage();
 
-		} else if (wrongGuess < 6) {
-			wrongGuess += 1;
-			console.log(wrongGuess);
-
-			// Changes playerTurn
-			if (playerTurn == 1 && wrongGuess !== 6) {
-				playerTurn = 2;
-				$('#playerTurn').text("Player Two's Turn");
-				swal("Player Two's Turn");
-			} else if (playerTurn == 2 && wrongGuess !== 6) {
-				playerTurn = 1;
-				$('#playerTurn').text("Player One's Turn");
-				swal("Player One's Turn");
-			} else if (wrongGuess == 6) {
-				// Checks if the players have guessed wrong to many times.
-				swal("Oh no!","You two guessed incorrect too many times. Click Let's play to play again.", "error");
-				console.log("wrong guess = 6")
-			}
+			if (incorrectGuessCount == 6) {
+				swal("Oh no!","You guessed incorrect too many times. Click Let's play to play again.", "error");
+			} else if (!onePlayer) {
+				changePlayerTurn();
+			}	
 		}
 
 		$('#' + guessedLetter).attr("disabled", "disabled");
 		$('#guessInput').val(0);
 	});
 
-	// When the letsPlay button is clicked a new game is started and the empty letter boxes appear, updates name, namesplit, count, and fact
+	// When the letsPlay button is clicked a new game is started and the empty letter boxes appear, updates name, namesplit, gamePlayCount, and fact
 	$('#letsPlay').on('click', function () {
-		if (count < $muscleBonesQuestions.length) {
-			count += 1;
-			nameSplit = $muscleBonesQuestions[count][0].split("");
-			name = $muscleBonesQuestions[count][0].toUpperCase();
-			fact = $muscleBonesQuestions[count][1];
-			makeBoxes();
-			wrongGuess = 0;
-			length = 0;
-			$('#hint').val(0);
-			$('#guessInput option').attr("disabled", false);
-		} else {
-			count = 0;
-		}
+		setupGame();
 	});
 
 });
