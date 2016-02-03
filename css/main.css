@@ -26,18 +26,47 @@ h1 {
 }
 
 img {
-	max-height: 600px;
+	max-height: 550px;
 	float: right;
-	margin: 0 100px 0 50px;
+	margin: 0 100px 0 0;
+}
+
+#buttons {
+	float: left;
+	margin: 50px;
 }
 
 #instructionsContainer {
-	margin: 100px 0 0 55px;
+	margin: 100px 0 0 50px;
 	background-color: rgba(0, 39, 183, 0.4);
 	background: rgba(0, 39, 183, 0.4);
 	/******textshadow*******/
 }
 
-#buttons {
-	float: left;
+@media screen and (max-width: 1430px) {
+	img {
+		float: none;
+	}
+
+	#image {
+		text-align: center;
+	}
+
+	button {
+		display: inline-block;
+		height: 50px;
+		width: 100px;
+		font-size: 15px;
+		margin: 10px 5px 0 0;
+	}
+
+	#buttons {
+		margin: 0 0 0 400px;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	#buttons {
+		margin: 0 0 0 200px;
+	}
 }
