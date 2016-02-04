@@ -2,7 +2,9 @@
 This is a mobile friendly hangman game designed for one and two players. Hints are available in a select menu with a brief description of the medical term's function. It uses jQuery's select menu and flip features, and Sweet Alert's alert functions.
 
 ## Screen Shots
-
+<img src="images/Project1.png">
+<img src="hangmanMain.png">
+<img src="hangman3.png">
 
 ## Features
 * Hint select menu
