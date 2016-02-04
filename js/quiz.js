@@ -52,6 +52,8 @@ function setupGame() {
 		setupHangmanWord();
 		incorrectGuessCount = 0;
 		correctGuessCount = 0;
+		scorePlayer1 = 0;
+		scorePlayer2 = 0;
 		$('#hint').val(0);
 		$('#guessInput option').attr("disabled", false);
 		$("#hangmanFrame img").attr("src", "../images/hangmanBase.jpg");
@@ -144,7 +146,18 @@ $(document).ready(function() {
 
 			// Checks if player has guessed all letters
 			if (correctGuessCount == name.length) {
-				swal("You won!!", "Click the Let's Play button to move on to the next round.", "success");
+				if (onePlayer == true) {
+					swal("You won!!", "Click the Let's Play button to move on to the next round.", "success");
+
+				} else if (onePlayer == false && scorePlayer1 < scorePlayer2) {
+					swal("Player 2 wins!!", "Click the Let's Play button to move on to the next round.", "success");
+
+				} else if (onePlayer == false && scorePlayer1 > scorePlayer2) {
+					swal("Player 1 wins!!", "Click the Let's Play button to move on to the next round.", "success");
+
+				} else if (onePlayer == false && scorePlayer1 > scorePlayer2) {
+					swal("It's a tie!", "Click the Let's Play button to move on to the next round.")
+				}
 			}
 
 		} else {
