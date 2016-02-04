@@ -1,25 +1,48 @@
 var $muscleBonesQuestions = [
 	[ "bonemarrow",
-		"This is where red blood cells are made.",
-		"http://www.sciencekids.co.nz/sciencefacts/humanbody.html" ],
+		"This is where red blood cells are made." ],
+
 	[ "brain",
-	 	"This organ uses over quarter of the oxegyn used by the human body",
-	 	"http://www.sciencekids.co.nz/sciencefacts/humanbody.html" ],
+	 	"This organ uses over quarter of the oxegyn used by the human body"],
+
 	[ "melanin",
-		"This is responsible for the color of human skin.  Low amounts result in light skin, while high amount result in dark skin.",
-		"http://www.sciencekids.co.nz/sciencefacts/humanbody.html" ],
+		"This is responsible for the color of human skin.  Low amounts result in light skin, while high amount result in dark skin." ],
+
 	[ "ears",
-		"These continue to grow your entire life.",
-		"http://www.sciencekids.co.nz/sciencefacts/humanbody.html" ],
+		"These continue to grow your entire life." ],
+
 	[ "epiglottis",
-		"The flap of tissue that closes during swallowing, preventing food going down the trachea (windpipe).",
-		"http://www.sciencekids.co.nz/sciencefacts/humanbody.html" ],
+		"The flap of tissue that closes during swallowing, preventing food going down the trachea (windpipe)." ],
+
 	[ "temporalbone",
-		"The hardest bone in the human body.",
-		"http://www.sciencekids.co.nz/sciencefacts/humanbody.html"  ],
+		"The hardest bone in the human body." ],
+
 	[ "optic",
-		"The information our eyes receive is sent to the brain along this nerve.",
-		"http://www.sciencekids.co.nz/sciencefacts/humanbody.html"]
+		"The information our eyes receive is sent to the brain along this nerve." ],
+
+	[ "orthopedics",
+		"The branch of medicine that focuses on bones."],
+
+	[ "femur",
+		"The longest bone in the human body."],
+
+	[ "joints",
+		"The area where our bones meet."],
+
+	[ "tastebuds",
+		"These sensory cells help detect the taste of food"],
+
+	[ "skin",
+		"The human body's largest organ"],
+
+	[ "epidermis",
+		"The outer layer of skin."],
+
+	[ "teeth",
+		"Humans form two sets of these in their life time"],
+
+	[ "keratin",
+		"Hair protein."]
 ]
 
 var playerTurn = 1;

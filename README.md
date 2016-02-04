@@ -3,8 +3,8 @@ This is a mobile friendly hangman game designed for one and two players. Hints a
 
 ## Screen Shots
 <img src="images/Project1.png">
-<img src="hangmanMain.png">
-<img src="hangman3.png">
+<img src="images/hangmanMain.png">
+<img src="images/hangman3.png">
 
 ## Features
 * Hint select menu
