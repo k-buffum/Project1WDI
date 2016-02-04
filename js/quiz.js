@@ -109,6 +109,7 @@ function resetScore() {
 
 $(document).ready(function() {
 	setupGame();
+	$('#singlePlayer').show();
 	$('#p2Score').hide();
 
 	$('#playerMode').on('click', function() {
@@ -116,11 +117,13 @@ $(document).ready(function() {
 			onePlayer = false;
 			$('#playerMode').html('One Player');
 			$('#p2Score').show();
+			$('#playerScore').html("Player One's Turn");
 			setupGame();
 		} else {
 			onePlayer = true;
 			$('#playerMode').html('Two Player');
 			$('#p2Score').hide();
+			$('#playerTurn').html("Hangman");
 			setupGame();
 		}
 		resetScore();

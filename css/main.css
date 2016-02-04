@@ -8,6 +8,7 @@ body {
 	background-position: 50% 50%;
 	color: white;
 	background-attachment: fixed;
+	font-family: 'Rancho', cursive;
 }
 
 button {
@@ -19,6 +20,7 @@ button {
 	margin: 20px 0 0 250px;
 	display: block;
 	overflow: hidden;
+	font-family: 'Rancho', cursive;
 }
 
 h1 {
@@ -36,11 +38,16 @@ img {
 	margin: 50px;
 }
 
+#h1 {
+	font-size: 40px;
+}
+
 #instructionsContainer {
-	margin: 100px 0 0 50px;
+	margin: 60px 0 0 40px;
 	background-color: rgba(0, 39, 183, 0.4);
 	background: rgba(0, 39, 183, 0.4);
-	/******textshadow*******/
+	text-shadow: 0.5px 0.5px black;
+	font-size: 22px;
 }
 
 @media screen and (max-width: 1430px) {
